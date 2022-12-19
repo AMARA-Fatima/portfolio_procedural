@@ -1,0 +1,16 @@
+body{
+    max-width: 1920px;
+    width: 100%;
+    color: rgb(247, 4, 215);
+    background-color: black;
+}
+button{
+    background-color: rgb(247, 4, 215);
+    color: azure;
+    border-radius: 100px;
+    width: 50%;
+    height: 50px;
+}
+.navbar{
+    background-color: rgb(247, 4, 215);
+}
