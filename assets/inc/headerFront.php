@@ -2,7 +2,7 @@
 
 <body>
     <header class="text-center mt-5">
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-pink text-dark">
             <div class="container">
                 <a class="navbar-brand" href="#">Portfolio</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">

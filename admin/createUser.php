@@ -1,7 +1,7 @@
 <!-- raccrocci pour trouver le lien d'une page apuyer sur la loupe et ecrire le nom de la page -->
 <!-- création d'un acces au back-office -->
 <?php
-include("../assets/inc/headFront.php") 
+include("../assets/inc/headFront.php")
 ?>
 <!--1. il faut créer un user avec le role admin dans la BDD pour avoir un administrateur du back-office(console d'adminiistration).
     2. pour cela on crée un formulaire user pour renseigner la BDD au niveau du CRUD.
@@ -18,7 +18,11 @@ include("../assets/inc/headFront.php")
                 <input class="form-control mt-3" type="text" name="prenom" placeholder="Votre prenom">
                 <input class="form-control mt-3" type="email" name="email" placeholder="Votre email">
                 <input class="form-control mt-3 mb-3" type="password" name="password" placeholder="Votre mot de passe">
-                <button type="submit" name="soumettre" class="offset-3">Enregistrer</button>
+                <div>
+                    <input type="checkbox" id="isAdmin" name="is_admin">
+                    <label for="isAdmin">Administrateur</label>
+                </div>
+                <button type="submit" name="soumettre" class="offset-3 mt-3">Enregistrer</button>
             </form>
             <?Php
             // on récupère le fichier de connexion => connexion.php qui correspond aux paramètre de connexion de notre BDD
@@ -40,7 +44,15 @@ include("../assets/inc/headFront.php")
                 $option = ['cost' => 12];
                 $password = password_hash(trim($_POST["password"]), PASSWORD_DEFAULT, $option);
                 // on dit que 1 est admin pour le role
-                $role = 1;
+                // $role = 1;
+                var_dump($_POST);
+                if (isset($_POST["is_admin"])) {
+                    // si la case "isAdmin" est cochée
+                    $role = 1;
+                } else {
+                    // si la case "isAdmin" n'est pas cochée
+                    $role = 2;
+                }
 
                 // 2. préparation de l'ecriture SQL :
                 $sql = "INSERT INTO user (

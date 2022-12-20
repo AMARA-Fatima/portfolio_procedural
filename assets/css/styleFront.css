@@ -11,3 +11,6 @@ button{
     width: 50%;
     height: 50px;
 }
+.bg-pink{
+    background-color: rgb(247, 4, 215);
+}
