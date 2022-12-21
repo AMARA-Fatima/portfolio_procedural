@@ -29,13 +29,21 @@ $users = mysqli_fetch_all($query, MYSQLI_ASSOC);
 <main>
     <div class="container">
         <div class="row justify-content-center">
+            <!-- gestion d'affichage des messages -->
+            <?php
+            if (isset($_SESSION["message"])) :
+                echo '<div class="alert alert-success" role="alert">' .
+                    $_SESSION["message"] . '</div>';
+                // on efface la clé messege, une fois qu'elle a été afficher avec unset()
+                unset($_SESSION["message"]);
+            endif;
+            ?>
             <div class="col-4 mt-5">
                 <h1 class="d-flex">Liste des utilisateurs</h1>
             </div>
         </div>
         <table class="table text-white mb-5">
-            <tr>
-                <th>ID</th>
+            <tr class="text-center">
                 <th>Nom</th>
                 <th>Prénom</th>
                 <th>Email</th>
@@ -46,10 +54,7 @@ $users = mysqli_fetch_all($query, MYSQLI_ASSOC);
             foreach ($users as $user) {
                 // TODO : pour chaque utilisateur, créer une nouvelle ligne (tr) et afficher ses informations dans des cellules (td)
             ?>
-                <tr>
-                    <td>
-                        <a href="../admin/updateUser.php?id_user=<?= $user["id_user"]; ?>"><?= $user["id_user"]; ?></a>
-                    </td>
+                <tr class="text-center">
                     <td><?= $user["nom"]; ?></td>
                     <td><?= $user["prenom"]; ?></td>
                     <td><?= $user["email"]; ?></td>
@@ -62,7 +67,11 @@ $users = mysqli_fetch_all($query, MYSQLI_ASSOC);
                         }
                         ?>
                     </td>
-                    <td>[suppression]</td>
+                    <td>
+                        <a type="button" class="btn bg-primary text-white" href="../admin/updateUser.php?id_user=<?= $user["id_user"]; ?>">Modifier</a>
+                        <a type="button" class="btn bg-success text-white" href="../admin/readUser.php?id_user=<?= $user["id_user"]; ?>">Détail</a>
+                        <a type="button" class="btn bg-danger text-white" href="../admin/deleteUser.php?id_user=<?= $user["id_user"]; ?>">Supprimer</a>
+                    </td>
                 </tr>
             <?php
             }

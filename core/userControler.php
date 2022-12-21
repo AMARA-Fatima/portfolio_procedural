@@ -20,6 +20,8 @@ switch ($action):
     case "update":
         upDateUser();
         break;
+    case "delete-user":
+        deleteUser();
 endswitch;
 
 // les differente fonctions de notre controler
@@ -104,7 +106,7 @@ function upDateUser()
     $nom = ucfirst(trim($_POST["nom"]));
     $prenom = ucfirst(trim($_POST["prenom"]));
     $email = strtolower(trim($_POST["email"]));
-    $password = trim($_POST["password"]);
+    $motDePass = trim($_POST["password"]);
     $role = $_POST["role"];
     $id = $_POST["id"];
 
@@ -124,7 +126,7 @@ function upDateUser()
         header("location:../admin/updateUser.php?id_user=" . $_POST["id"]);
         exit;
     }
-    if (strlen($password) < 1) {
+    if (strlen($motDePass) < 1) {
         $_SESSION["message"] = "Le mot de passe doit  avoir au moins 1 caractère";
         header("location:../admin/updateUser.php?id_user=" . $_POST["id"]);
         exit;
@@ -138,20 +140,26 @@ function upDateUser()
     // la gestion de l'encodage (sécurisation) du mot de passe (il faut utiliser les [] au lieux des ())
     // cost = l'option d'encodage 12 = c'est niveau d'encodage
     $option = ['cost' => 12];
-    $password = password_hash($password, PASSWORD_DEFAULT, $option);
+    $motDePass = password_hash($motDePass, PASSWORD_DEFAULT, $option);
 
     // les données sont valider, préparons-nous à les ennvoyer en base de données 
     require("connexion.php");
 
     $sql = "UPDATE user
-        SET `nom` = '$nom', `prenom` = '$prenom', `email` = '$email', `role` = $role, `password` = '$password'
+        SET `nom` = '$nom', `prenom` = '$prenom', `email` = '$email', `role` = $role, `password` = '$motDePass'
         WHERE `id_user` = $id
     ";
 
-     // execution de la requete
-     $query = mysqli_query($connexion, $sql) or die(mysqli_error($connexion));
+    // execution de la requete
+    $query = mysqli_query($connexion, $sql) or die(mysqli_error($connexion));
 
-     $_SESSION["message"] = "Les données ont bien été mises à jour";
-        header("location:../admin/listUser.php" . $_POST["id"]);
-        exit;
+    $_SESSION["message"] = "Les données ont bien été mises à jour";
+    header("location:../admin/listUser.php?id_user=" . $_POST["id"]);
+    exit;
+}
+
+function deleteUser()
+{
+    // récuperation de la connexion 
+    require("connexion.php");
 }
