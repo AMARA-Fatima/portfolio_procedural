@@ -3,7 +3,7 @@
 <?php
 include("../assets/inc/headBack.php");
 // vérifions si l'utilisateur a le droit d'acceder à la page 
-if (!isset($_SESSION["role"], $_SESSION["isLog"], $_SESSION["prenom"]) || !$_SESSION["isLog"] || $_SESSION["role"] != 1) {
+if (!isset($_SESSION["role"], $_SESSION["islog"], $_SESSION["prenom"]) || !$_SESSION["islog"] || $_SESSION["role"] != 1) {
 
     // l'uitilisateur n'a pas le droit : redirigons le 
     $_SESSION["message"] = "Vous n'avez pas de droit administrateur !!!";

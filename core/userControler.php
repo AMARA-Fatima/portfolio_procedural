@@ -1,5 +1,5 @@
 <!-- tour de controle de notre site -->
-<title>Page userControler.php</title>
+<title>Page userControler</title>
 <?php
 session_start();
 // on analyse ce qu'il y a à faire :

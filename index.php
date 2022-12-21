@@ -15,6 +15,7 @@
         unset($_SESSION["message"]);
     endif;
     ?>
+    
 </main>
 
 <?php include("assets/inc/footerFront.php") ?>

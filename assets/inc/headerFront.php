@@ -1,7 +1,7 @@
 </head>
 
 <body>
-    <header class="text-center mt-5">
+    <header>
         <nav class="navbar navbar-expand-lg navbar-dark bg-pink text-dark">
             <div class="container">
                 <a class="navbar-brand" href="#">Portfolio</a>

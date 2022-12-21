@@ -6,7 +6,7 @@ include("../assets/inc/headFront.php")
 <!--1. il faut créer un user avec le role admin dans la BDD pour avoir un administrateur du back-office(console d'adminiistration).
     2. pour cela on crée un formulaire user pour renseigner la BDD au niveau du CRUD.
     3. Nous allons faire un Create avec l'instruction SQL INSERT INTO -->
-<title>Portfolio</title>
+<title>createUser</title>
 <?php include("../assets/inc/headerFront.php") ?>
 
 <div class="container">
