@@ -19,9 +19,6 @@
                             <li class="nav-item">
                                 <a href="../admin/listUser.php" class="nav-link active">listUser</a>
                             </li>
-                            <li class="nav-item">
-                                <a hhref="../admin/updateUser.php" class="nav-link active">updateUser</a>
-                            </li>
                         </ul>
                     </div>
                 </div>

@@ -37,7 +37,7 @@ $user = mysqli_fetch_assoc($query);
 ?>
 
 <main>
-    <h1 class="offset-4">Détail de l'utilisateur</h1>
+    <h1 class="offset-4 text-decoration-underline">Détail de l'utilisateur :</h1>
     <table class="table text-white mt-5">
         <tr>
             <th>ID</th>
@@ -64,6 +64,53 @@ $user = mysqli_fetch_assoc($query);
             <td>[suppression]</td>
         </tr>
     </table>
+    <div class="container justify-content-center">
+        <h2 class="offset-4 text-decoration-underline mt-5">Modification de l'utilisateur :</h2>
+        <!-- gestion d'affichage des messages -->
+        <?php
+            if (isset($_SESSION["message"])) :
+                echo '<div class="alert alert-success" role="alert">' .
+                    $_SESSION["message"] . '</div>';
+                // on efface la clé messege, une fois qu'elle a été afficher avec unset()
+                unset($_SESSION["message"]);
+            endif;
+        ?>
+        <form method="POST" action="../core/userControler.php" class="col-6 offset-3">
+
+            <!-- input caché qui permet d'executer l'action de modification -->
+            <input type="hidden" name="faire" value="update">
+
+            <!-- input caché qui permet d'envoyer id pour savoir quel utilisateur nous allons modifier -->
+            <input type="hidden" name="id" value="<?= $user["id_user"] ?>">
+
+            <label for="nom">Nom :</label>
+            <input type="text" id="nom" name="nom" class="form-control" value="<?= $user["nom"] ?>">
+
+            <label for="prenom">Prenom :</label>
+            <input type="text" id="prenom" name="prenom" class="form-control" value="<?= $user["prenom"] ?>">
+
+            <label for="eamil">Email :</label>
+            <input type="email" id="eamil" name="email" class="form-control" value="<?= $user["email"] ?>">
+
+            <label for="password">Password :</label>
+            <input type="password" id="password" name="password" class="form-control">
+
+            <label for="role" class="mt-3">Role :</label>
+            <select name="role" id="role">
+                <option value="2" <?php
+                                    if ($user["role"] == 2) {
+                                        echo "selected";
+                                    } ?>>Utilisateur</option>
+                <option value="1" <?php
+                                    if ($user["role"] == 1) {
+                                        echo "selected";
+                                    } ?>>Administrateur</option>
+            </select>
+
+            <button type="submit" class="col-2 offset-3 fw-bold">Modifier</button>
+
+        </form>
+    </div>
 </main>
 
 <?php

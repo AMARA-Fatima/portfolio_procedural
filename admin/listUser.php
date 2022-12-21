@@ -33,7 +33,7 @@ $users = mysqli_fetch_all($query, MYSQLI_ASSOC);
                 <h1 class="d-flex">Liste des utilisateurs</h1>
             </div>
         </div>
-        <table class="table text-white">
+        <table class="table text-white mb-5">
             <tr>
                 <th>ID</th>
                 <th>Nom</th>
@@ -68,7 +68,7 @@ $users = mysqli_fetch_all($query, MYSQLI_ASSOC);
             }
             ?>
         </table>
-        <a href="../admin/createUser.php" class="offset-4 mt-5">nouvel utilisateur</a>
+        <a href="../admin/createUser.php" class="offset-5">Ajouet un nouvel utilisateur</a>
     </div>
 </main>
 
