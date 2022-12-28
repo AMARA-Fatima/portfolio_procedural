@@ -1,4 +1,4 @@
-<title>page supprimer</title>
+<title>detail d'un utilisateur</title>
 <?php
 // dans ce fichier on va créer la page connexion à notre back-office / avec le login : identifiant & mot de passe
 include("../assets/inc/headBack.php");
@@ -42,18 +42,19 @@ $user = mysqli_fetch_assoc($query);
 <main>
     <h1 class="offset-4 text-decoration-underline">Détail de l'utilisateur :</h1>
     <div class="container">
-        <div class="row">
-            <div>
-                <h4 class="d-flex justify-content-center mt-5">Attention vous êtes sur le point de supprimer le user : <?= $user["nom"] . ' ' . $user["prenom"] ?></h4>
-                <br>
-                <div>
-                    <form action="../core/userControler.php" method="post" class="d-flex offset-">
-                        <a type="button" class="col-2 btn bg-success text-white rounded-pill fw-bold pt-2 mx-5" href="../admin/listUser.php">Retour liste</a>
-                        <input type="hidden" name="faire" value="delete-user">
-                        <input type="hidden" name="id" value="<?= $user["id_user"]; ?>">
-                        <button type="submit" class="col-2 fw-bold">Supprimer</button>
-                    </form>
-                </div>
+        <div class="row justify-content-center">
+            <div class="col-4">
+                <p>Le nom : <?php echo $user["nom"] ?></p>
+                <p>Le prénom : <?php echo $user["prenom"] ?></p>
+                <p>L'email : <?php echo $user["email"] ?></p>
+                <p>Le rôle : <?php
+                                if ($user["role"] == 1) :
+                                    echo "Administrateur";
+                                else :
+                                    echo "Utilisateur";
+                                endif;
+                                ?>
+                </p>
             </div>
         </div>
     </div>

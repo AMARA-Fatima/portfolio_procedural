@@ -146,8 +146,8 @@ function upDateUser()
     require("connexion.php");
 
     $sql = "UPDATE user
-        SET `nom` = '$nom', `prenom` = '$prenom', `email` = '$email', `role` = $role, `password` = '$motDePass'
-        WHERE `id_user` = $id
+            SET `nom` = '$nom', `prenom` = '$prenom', `email` = '$email', `role` = $role, `password` = '$motDePass'
+            WHERE `id_user` = $id
     ";
 
     // execution de la requete
@@ -160,6 +160,18 @@ function upDateUser()
 
 function deleteUser()
 {
+    $id = $_POST["id"];
     // récuperation de la connexion 
     require("connexion.php");
+    // récupération de l'id dans l'input caché du formulaire du bouton qui a le name="id" (dans page userControler)
+    // preparation de la requete
+    $sql = "DELETE  FROM user -- suppression de la table user
+            WHERE id_user = '$id' -- avec le l'id_user selectionné
+            "; // id récupéré
+    // execution de la requête avec la connexion 
+    mysqli_query($connexion, $sql) or die(mysqli_error($connexion));
+    // message de confirmation de  la suppression 
+    $_SESSION["message"] = "L'utilisateur a bien été supprimer !";
+    header("location:../admin/listUser.php");
+    exit;
 }

@@ -9,22 +9,27 @@ Nous allons créer un site portfolio :
             - email
             - password
             - role 
+
     - l'accès à la messagerie :
-        - une table message 
-            - nom
-            - prenom
-            - société
-            - email
-            - telephone
-            - le message (description)
-    - l'acces aux compétences :
-        - une table back_end et front_end 
-            - type 
-            - titre 
-            - texte 
-            - image
-            - lien
-            - active 
+        - une table message
+            - id_message (A.I. Auto Incrémentation primary key) 
+            - nom (VARCHAR 255) : non null
+            - prenom (VARCHAR 255) : non null
+            - société (VARCHAR 255) : null
+            - email (VARCHAR 255) : non null (clé unique)
+            - telephone (VARCHAR 255) : null
+            - le message (description) : non null
+
+    - l'acces aux compétences : (une table back_end et front_end )
+        - une table competences :
+            - id_competence (A.I. Auto Incrémentation primary key)
+            - type (int 2) (1= front-end, 2= back-end) : non null
+            - titre (VARCHAR 255) : non null
+            - texte (VARCHAR 255) : null
+            - image (VARCHAR 255) : null
+            - lien  (VARCHAR 255) : null
+            - active (boolean)    : non null
+
 
 4. création de l'architecture (arborescence des dossiers et fichiers)
 5. création de la table user dans la bdd portfolio
